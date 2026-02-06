@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WASM Runner</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+
+    * {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    #stepcount {
+      heigh
+    }
+
+    #input {
+      width: 100%;
+      height: calc(100% - 25px);
+      box-sizing: border-box;
+    }
+
+    #stepcount {
+      height: 20px;
+    }
+
+    #console {
+      flex: 1;
+      height: calc(100% - 10px);
+      overflow-y: auto;
+      background: #111;
+      color: #5aa;
+      font-family: monospace;
+      white-space: pre-wrap;
+      font-size: 10pt;
+      padding: 5px;
+    }
+
+    button {
+      height: 25px
+    }
+  </style>
+</head>
+<body>
+  <div style="flex: 1;">
+    <button id="run">Run</button>
+    <button id="step" disabled>Step</button>
+    <input type="text" placeholder="Step Count" id="stepcount">
+    <a href="/README.md">README</a>
+    <textarea id="input">[simple program that outputs the letter a]
+a = !
+b = !
+b > a
+
+[chain start]
+c = !
+d = c
+
+[loop start]
+    &lt
+    [add a node to the chain]
+    e = !
+    d > e
+    d = e
+
+    a % ^a [increment the weight of a]
+
+
+    ? a;b*65 @ -1 [check if the child of b (which is a) has a weight of 65, jump to the start of the loop if it doesnt]
+[loop end]
+
+
+[c should now be the start of a chain with 65 nodes]
+) = c [print out the letter A]</textarea>
+  </div>
+
+  <div id="console"></div>
+
+  <script type="module">
+    import init from "./web_graf_lang.js";
+    init();
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+[package]
+name = "web-graf-lang"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+graf-lang = "0.2.0"
+wasm-bindgen = "0.2.108"
+web-sys = { version = "0.3.85", features = [
+    "Window",
+    "Document",
+    "HtmlTextAreaElement",
+    "HtmlButtonElement",
+    "HtmlElement",
+    "HtmlInputElement"
+] }
+getrandom = { version = "*", features = [ "wasm_js" ]}
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+opt-level = "s"
+target = "wasm32-unknown-unknown"
+
+[target.wasm32-unknown-unknown]
+rustflags = ['--cfg', 'getrandom_backend="wasm_js"']
