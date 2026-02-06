@@ -1,5 +1,7 @@
 An esolang based on graph theory.
 
+[Run stuff](https://beanifier.github.io/web-graf-lang/web/)
+
 # Syntax
 
 ## Pointer
